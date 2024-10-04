@@ -1,3 +1,5 @@
+const User = require('./User');
+
 class Scooter {
 
   constructor(station) {
@@ -14,10 +16,11 @@ class Scooter {
 
   rent(user) {
     // Check if scooter has enough charge and is not broken
+    if (user instanceof User){
     if (this.charge > 20 && this.isBroken === false) {
       this.station = null;  
       this.user = user;  
-      console.log(`Scooter ${this.serial} has been rented by ${this.user}`);
+      console.log(`Scooter ${this.serial} has been rented by ${this.user.username}`);
     } 
     // Check if the scooter is broken
     else if (this.isBroken === true) {
@@ -28,11 +31,12 @@ class Scooter {
       throw new Error('Scooter needs to charge');
     }
   }
+}
 
   dock (station){
     this.station=station
     this.user=null
-    console.log(`This scooter has been docked at ${this.station} by ${this.user}`)
+    console.log(`This scooter has been docked at ${this.station} by ${this.user.username}`)
   }
 }
 
