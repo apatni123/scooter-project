@@ -24,6 +24,7 @@ registerUser(username,password,age){
     const newUser = new User (username,password,age)
     this.registeredUsers[username] = newUser
     console.log('registeration done')
+    return newUser
   }
 }
 
@@ -38,7 +39,7 @@ if (!user){
 
 logoutUser(username){
   const user = this.registeredUsers[username]
-  if (!user){
+  if (!user.loggedIn){
     throw new Error ('no such user is logged in')
   }
   user.logout()
@@ -57,19 +58,23 @@ logoutUser(username){
   return newScooter
 }
 
-dockScooter(scooter,station){
+dockScooter(scooter, station) {
   if (!this.stations[station]) {
     throw new Error('No such station');
   }
 
-  if (scooter.station === station) {
+  if (this.stations[station].includes(scooter)) {
     throw new Error('Scooter already at this station');
   }
 
-  this.stations[station].push(scooter)
-  Scooter.user = null
-  console.log('scooter is docked')
+  this.stations[station].push(scooter);
+  
+  scooter.station = station;
+  scooter.user = null;
+  
+  console.log('scooter is docked');
 }
+
 
 
 rentScooter(scooter, user) {

@@ -34,9 +34,9 @@ class Scooter {
 
   dock (station){
     this.station=station
-    this.user=null
-    console.log(`This scooter has been docked at ${this.station} by ${this.user.username}`)
     
+    console.log(`This scooter has been docked at ${this.station} by ${this.user.username}`)
+    this.user=null
   }
 }
 
