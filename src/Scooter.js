@@ -15,28 +15,28 @@ class Scooter {
 
 
   rent(user) {
-    // Check if scooter has enough charge and is not broken
-    if (user instanceof User){
-    if (this.charge > 20 && this.isBroken === false) {
+    if (!(user instanceof User)) {
+      throw new Error('Invalid user instance');
+    }
+    
+    if (this.charge > 20 && !this.isBroken) {
       this.station = null;  
       this.user = user;  
       console.log(`Scooter ${this.serial} has been rented by ${this.user.username}`);
     } 
-    // Check if the scooter is broken
-    else if (this.isBroken === true) {
+    else if (this.isBroken) {
       throw new Error('Scooter needs repair');
     } 
-    // Check if the scooter has low charge
     else if (this.charge <= 20) {
       throw new Error('Scooter needs to charge');
     }
   }
-}
 
   dock (station){
     this.station=station
     this.user=null
     console.log(`This scooter has been docked at ${this.station} by ${this.user.username}`)
+    
   }
 }
 
