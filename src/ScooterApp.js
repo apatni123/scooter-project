@@ -6,7 +6,6 @@ class ScooterApp {
   // ScooterApp code here
   constructor(){
    this.stations = {
-    Gants Hill: [],
     Redbridge: [],
     Wanstead: [],
     Leytonstone: [],
