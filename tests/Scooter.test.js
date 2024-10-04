@@ -15,7 +15,7 @@ describe('scooter methods', () => {
 
   beforeEach(() => {
     scooter = new Scooter('Redbridge');
-    user = new User('alice', 'password123', 25);
+    user = new User('dhanyal', 'password123', 25);
   });
 
   test('should rent scooter to a user', () => {

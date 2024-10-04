@@ -12,14 +12,14 @@ beforeEach(() => {
 // register user
 describe('registerUser method tests', () => {
   test('Should return instance of User when registering a new user', () => {
-    const response = scooterApp.registerUser('Joe Bloggs', 'test123', 21);
+    const response = scooterApp.registerUser('Aishah Patni', 'testing', 23);
     expect(response).toBeInstanceOf(User);
   });
 
   test('Should throw error if user already registered', () => {
-    scooterApp.registerUser('Joe Bloggs', 'test123', 21);
+    scooterApp.registerUser('Aishah Patni', 'testing', 23);
     expect(() => {
-      scooterApp.registerUser('Joe Bloggs', 'test123', 21);
+      scooterApp.registerUser('Aishah Patni', 'testing', 23);
     }).toThrow('user already registered');
   });
 
@@ -33,18 +33,18 @@ describe('registerUser method tests', () => {
 // log in
 describe('loginUser method tests', () => {
   beforeEach(() => {
-    scooterApp.registerUser('Joe Bloggs', 'test123', 21);
+    scooterApp.registerUser('Aishah Patni', 'testing', 23);
   });
 
   test('Should successfully log in the user', () => {
-    const user = scooterApp.registeredUsers['Joe Bloggs'];
-    scooterApp.loginUser('Joe Bloggs', 'test123');
+    const user = scooterApp.registeredUsers['Aishah Patni'];
+    scooterApp.loginUser('Aishah Patni', 'testing');
     expect(user.loggedIn).toBe(true);
   });
 
   test('Should throw error for incorrect username or password', () => {
     expect(() => {
-      scooterApp.loginUser('Joe Bloggs', 'wrongpassword');
+      scooterApp.loginUser('Aishah Patni', 'wrongpassword');
     }).toThrow('Incorrect password');
   });
 
@@ -58,20 +58,20 @@ describe('loginUser method tests', () => {
 // log out
 describe('logoutUser method tests', () => {
   beforeEach(() => {
-    scooterApp.registerUser('Joe Bloggs', 'test123', 21);
-    scooterApp.loginUser('Joe Bloggs', 'test123');
+    scooterApp.registerUser('Aishah Patni', 'testing', 23);
+    scooterApp.loginUser('Aishah Patni', 'testing');
   });
 
   test('Should successfully log out the user', () => {
-    const user = scooterApp.registeredUsers['Joe Bloggs'];
-    scooterApp.logoutUser('Joe Bloggs');
+    const user = scooterApp.registeredUsers['Aishah Patni'];
+    scooterApp.logoutUser('Aishah Patni');
     expect(user.loggedIn).toBe(false);
   });
 
   test('Should throw error if user is not logged in', () => {
-    scooterApp.logoutUser('Joe Bloggs');
+    scooterApp.logoutUser('Aishah Patni');
     expect(() => {
-      scooterApp.logoutUser('Joe Bloggs');
+      scooterApp.logoutUser('Aishah Patni');
     }).toThrow('no such user is logged in');
   });
 });
@@ -81,10 +81,10 @@ describe('rentScooter method tests', () => {
   let user, scooter;
 
   beforeEach(() => {
-    scooterApp.registerUser('Joe Bloggs', 'test123', 21);
-    scooterApp.loginUser('Joe Bloggs', 'test123');
+    scooterApp.registerUser('Aishah Patni', 'testing', 23);
+    scooterApp.loginUser('Aishah Patni', 'testing');
     scooter = scooterApp.createScooter('Redbridge');
-    user = scooterApp.registeredUsers['Joe Bloggs'];
+    user = scooterApp.registeredUsers['Aishah Patni'];
   });
 
   test('Should successfully rent a scooter', () => {
@@ -106,10 +106,10 @@ describe('dockScooter method tests', () => {
   let user, scooter;
 
   beforeEach(() => {
-    scooterApp.registerUser('Joe Bloggs', 'test123', 21);
-    scooterApp.loginUser('Joe Bloggs', 'test123');
+    scooterApp.registerUser('Aishah Patni', 'testing', 23);
+    scooterApp.loginUser('Aishah Patni', 'testing');
     scooter = scooterApp.createScooter('Redbridge');
-    user = scooterApp.registeredUsers['Joe Bloggs'];
+    user = scooterApp.registeredUsers['Aishah Patni'];
   });
 
   test('Should successfully dock a scooter', () => {
